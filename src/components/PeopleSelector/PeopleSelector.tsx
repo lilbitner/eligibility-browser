@@ -10,11 +10,13 @@ interface PeopleSelectorProps {
 
 export const PeopleSelector = ({ people, onSelect }: PeopleSelectorProps) => {
   const renderPeople = () => {
-    return people.map((person: Person) => {
+    return people.map((person: Person, i: number) => {
+        const formattedName = formatName(person.last_name, person.first_name);
+        const formattedStatus = getStatus(person);
         return (
-            <li key={person.date_of_birth} style={{ marginBottom: '16px'}}>
+            <li key={`${person.date_of_birth}-${i}`} style={{ marginBottom: '16px'}}>
                 <button style={{ backgroundColor: 'transparent'}} onClick={() => onSelect(person)}>
-                    {formatName(person.last_name, person.first_name)} ({getStatus(person)})
+                    {formattedName} {formattedStatus}
                 </button>
             </li>
         )

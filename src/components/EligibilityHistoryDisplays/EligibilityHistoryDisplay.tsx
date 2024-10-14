@@ -10,14 +10,18 @@ interface EligibilityHistoryDisplayProps {
 
 const renderEligibilityTimeline = (eligibilityHistory: EligibilityHistory[]) => {
     if (!eligibilityHistory.length) return <p>No eligibility history</p>;
+
     return eligibilityHistory.map((eligibility, i) => {
         let display: React.ReactNode;
+
         if (eligibility.type === EmployeeStatus.DEPENDENT) {
           display = <DependentEligibilityHistoryDisplay eligibilityHistory={eligibility} />
         } else if (eligibility.type === EmployeeStatus.EMPLOYEE) {
                 display = <EmployeeEligibilityHistoryDisplay eligibilityHistory={eligibility} />
         } else if (eligibility.type === EmployeeStatus.RETIREE) {
                 display = <RetireeEligibilityHistoryDisplay eligibilityHistory={eligibility} />
+        } else {
+            display = <p>Unknown eligibility type</p>
         }
 
         return (

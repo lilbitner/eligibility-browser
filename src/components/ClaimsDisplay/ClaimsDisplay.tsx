@@ -7,7 +7,7 @@ interface ClaimsDisplayProps {
 }
 
 export const ClaimsDisplay = ({ person }: ClaimsDisplayProps) => {
-    const personHasClaims = person && person?.claims.length;
+    const personHasClaims = person && person.claims.length;
 
     const getNumberOfClaims = () => {
         if (person) return `(${person.claims.length})`;
@@ -36,8 +36,11 @@ export const ClaimsDisplay = ({ person }: ClaimsDisplayProps) => {
 
     return (
         <ColumnWrapper title={`Claims ${getNumberOfClaims()}`}>
-          {person && !personHasClaims ? <p>No claims found</p> : null}
-          {person && renderClaims()}
+            {person &&
+                <>
+                    {!personHasClaims ? <p>No claims found</p> : renderClaims()}
+                </>
+            }
         </ColumnWrapper>
     )
 

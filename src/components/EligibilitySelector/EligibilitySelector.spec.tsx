@@ -21,13 +21,14 @@ describe('EligibilitySelector', () => {
 
   it('selects a person to view', async () => {
     render(<EligibilitySelector />);
+    const indexSelected = 1;
 
     const peopleToSelect = screen.getAllByRole('button');
     const sortedPeople = sortPeopleByLastName(mockPeople.default)
 
-    fireEvent.click(peopleToSelect[1]);
+    fireEvent.click(peopleToSelect[indexSelected]);
 
-    const selectedPersonBirthDate = sortedPeople[1].date_of_birth;
+    const selectedPersonBirthDate = sortedPeople[indexSelected].date_of_birth;
     const displayedDate = await screen.findByText(`Born: ${selectedPersonBirthDate}`);
 
     expect(displayedDate).toBeTruthy();
