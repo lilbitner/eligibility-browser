@@ -17,6 +17,19 @@ npm install
 npm run dev
 ```
 
+* The components directory houses all components. This would ideally be broken down into either an atomic design layout (atoms, molecules, organisms, pages) or on a per-feature basis. For now, all components exist at the same level. 
+* The api directory houses the mock API data, but would presumably hold logic surrounding the api and data quering. 
+* The core directory is intended to house all-application reusable logic, for example, types. 
+* The utils directory is intended to house utility functions. It is at the top level for now, but would presumably be a directory on a per-feature basis. 
+
+## Immediate improvements to be made
+
+* In-line styling of components should be removed and seperated into seperate styling files per component. This could leverage a third-party library such as emotion. 
+* A design system of basic components and tokens (for spacing and fontSize for example), should be utilized to maintain UI consistency.
+* For scalability, file structure should be organized to better reflect how each component is utilized. 
+* Unit tests should be added for each component. 
+
+
 # Prompt
 
 ## Frontend Software Development Engineer -- Technical Coding Problem
