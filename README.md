@@ -22,7 +22,7 @@ npm run dev
 * The `core` directory is intended to house all-application reusable logic, for example, types. 
 * The `utils` directory is intended to house utility functions. It is at the top level for now, but would presumably be a directory on a per-feature basis. 
 
-## Immediate improvements to be made
+## Some improvements to be made
 
 * In-line styling of components should be removed and seperated into seperate styling files per component. This could leverage a third-party library such as emotion. 
 * A design system of basic components and tokens (for spacing and fontSize for example), should be utilized to maintain UI consistency.
