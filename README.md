@@ -25,7 +25,7 @@ npm run dev
 ## Some improvements to be made
 
 * In-line styling of components should be removed and seperated into seperate styling files per component. This could leverage a third-party library such as emotion. 
-* A design system of basic components and tokens (for spacing and fontSize for example), should be utilized to maintain UI consistency.
+* A design system of basic components and tokens (for spacing and font size for example), should be utilized to maintain UI consistency.
 * For scalability, file structure should be organized to better reflect how each component is utilized. 
 * Unit tests should be added for each component. 
 
