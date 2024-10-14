@@ -109,14 +109,14 @@ I believe a relational database would make sense for this set of data. From a hi
 
 
 #### Describe strategies for scaling the above application for the following cases:
-#### 100 claims per year for a person
+##### 100 claims per year for a person
 
 There are a few approaches to handling larger sets of claims data, some ideas are as follows: 
 
 * Data pagination for this particular claims endpoint. For example, the Claims column could render the first '20' claims, and with each user click to the next '20', more data is fetched.
 * Along the same lines as data pagination, only rendering data that is selected for view within the History column itself. For example, the user can select a particular timeframe within the History column, and the claims within that timeframe are rendered within the Claims column - so the amount of data fetched is reduced and segmented by timeframe.  
 
-#### 10,000 employees, and more than 10,000 dependents
+##### 10,000 employees, and more than 10,000 dependents
 
 With this scale of people data, it is important to reduce the potential performance issues that accompany rendering many components within the DOM and gathering large amounts of data. A few ideas are as follows: 
 
