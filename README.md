@@ -17,10 +17,10 @@ npm install
 npm run dev
 ```
 
-* The components directory houses all components. This would ideally be broken down into either an atomic design layout (atoms, molecules, organisms, pages) or on a per-feature basis. For now, all components exist at the same level. 
-* The api directory houses the mock API data, but would presumably hold logic surrounding the api and data quering. 
-* The core directory is intended to house all-application reusable logic, for example, types. 
-* The utils directory is intended to house utility functions. It is at the top level for now, but would presumably be a directory on a per-feature basis. 
+* The `components` directory houses all components. This would ideally be broken down into either an atomic design layout (atoms, molecules, organisms, pages) or on a per-feature basis. For now, all components exist at the same level. 
+* The `api` directory houses the mock API data, but would presumably hold logic surrounding the api and data quering. 
+* The `core` directory is intended to house all-application reusable logic, for example, types. 
+* The `utils` directory is intended to house utility functions. It is at the top level for now, but would presumably be a directory on a per-feature basis. 
 
 ## Immediate improvements to be made
 
