@@ -100,25 +100,27 @@ are most confident in.
 * What API endpoint(s) would you write, and how would you structure them?
 
 I would structure the endpoints as follows: 
-1. One endpoint to fetch the list of people to display. This endpoint would return basic information about each person in order to display them within the People column (i.e name, status, and id). Specifically, it would return the status of each employee already calculated, so this logic exists on the server-side. 
-2. The next logical endpoint would be to fetch the information about the person selected. I envision that the endpoint would leverage the id of the person that the frontend already has from the first endpoint, in order to query for the particular person. This endpoint would return the eligibility history as well as the claims history, though in terms of scalability for large amounts of claims, then perhaps a second endpoint is warranted, in a similar fashion, to fetch the claims data (described below in more detail). 
+* There would exist one GET endpoint to fetch the list of people to display. This endpoint would return basic information about each person in order to display them within the People column (i.e name, status, and id). It would return the status of each employee already calculated, as opposed to that logic existing on the frontend. 
+* The next logical endpoint would be another GET to fetch the information about the person selected. I envision that the endpoint would leverage the id of the selected person, which the frontend already has access to, in order to query for that particular person's history and claims information. For now this endpoint returns both history and claims, though for scalability sake, if there exists a need to handle large amounts of data for history or claims, then perhaps the endpoints can be seperated. 
 
 * Would you recommend a specific data storage solution? Why?
 
-I believe a relational database would make sense for this set of data. From a high level, a People table, an EligibilityHistory table, and a Claims table. People would have many EligibilityHistory and would have many Claims. Cloud based options, such as Amazon S3 or Google Cloud Storage, may be useful here to support scalability.
+I believe a relational database would make sense for this set of data. From a high level, a People table, an EligibilityHistory table, and a Claims table. People would have many EligibilityHistory and People would have many Claims. Cloud based options, such as Amazon S3 or Google Cloud Storage, may be useful here to support scalability.
 
 
 ##### Describe strategies for scaling the above application for the following cases:
 * 100 claims per year for a person
 
-1. Data pagination for this particular claims endpoint. For example, the Claims column could render the first '20' claims, and with each user click to the next '20', more data is fetched. This reduces load
-2. In line with this, only rendering data that is selected for view within the History column itself. For example, the user can select a particular timeframe within the History column, and the claims within that timeframe are rendered within the Claims column. 
+There are a few approaches to handling larger sets of claims data, some ideas are as follows: 
+
+* Data pagination for this particular claims endpoint. For example, the Claims column could render the first '20' claims, and with each user click to the next '20', more data is fetched.
+* In line with data pagination, only rendering data that is selected for view within the History column itself. For example, the user can select a particular timeframe within the History column, and the claims within that timeframe are rendered within the Claims column - so the amount of data fetched is reduced and segmented by timeframe.  
 
 * 10,000 employees, and more than 10,000 dependents
 
-With this much people data, it is important to reduce the potential performance issues that will come along with rendering many components within the DOM and gathering large amounts of data. A few ideas: 
+With this scale of people data, it is important to reduce the potential performance issues that accompany rendering many components within the DOM and gathering large amounts of data. A few ideas are as follows: 
 
-1. Implement search functionality, that allows a user to search for a particular person. This search can implement filters based on type or status, for example. This will limit having to render thousands of people and DOM components, and will limit the amount of data that is fetched. And with this, ensure a proper loading state exists while the data is being fetched. Pagination or infinite scroll may also be effective here. 
-2. Leverage a caching mechanism, such as sever-side caching, that supports retrieving the data as efficiently as possible. 
-3. It is also important to keep in mind the optimization of the frontend components that are being highly utilized within this People column. For example, memoizing what is necessary within a component to reduce redundant computations. 
+* Implement search functionality that allows a user to search for a particular person. This search can implement filters based on type or status, for example. This will limit having to render thousands of people and components and will limit the amount of data that is fetched at once. And with this, ensure a proper loading state exists while the data is being fetched. Pagination or infinite scroll may also be effective here. 
+* Leverage a caching mechanism, such as sever-side caching, that supports retrieving potentially frequently accessed data as efficiently as possible. 
+* It is also important to keep in mind the optimization of each frontend component that is being highly utilized within this People column. For example, memoizing what is necessary within a component to reduce redundant computations. 
 

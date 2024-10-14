@@ -16,7 +16,7 @@ export const PeopleSelector = ({ people, onSelect }: PeopleSelectorProps) => {
         return (
             <li key={`${person.date_of_birth}-${i}`} style={{ marginBottom: '16px'}}>
                 <button style={{ backgroundColor: 'transparent'}} onClick={() => onSelect(person)}>
-                    {formattedName} {formattedStatus}
+                    {formattedName} {`(${formattedStatus})`}
                 </button>
             </li>
         )
